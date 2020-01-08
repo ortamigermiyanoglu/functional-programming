@@ -6,6 +6,7 @@ package com.sumutella.builtin_functional_interfaces;
 * into a value and returning it.
 */
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 
@@ -19,8 +20,20 @@ public class ImplementingFunctionBiFunction {
     public static void main(String[] args) {
         Function<String, Integer> f1 = String::length;
         Function<String, Integer> f2 = x -> x.length();
-        System.out.println(f1.apply("cluck"));
-        System.out.println(f2.apply("cluck"));
+
+        int a = f1.apply("chuck");
+        int b = f2.apply("chuck");
+
+        System.out.println(a==b);
+
+        BiFunction<String, String, String> b1 = String::concat;
+        BiFunction<String, String, String> b2 = (string, toAdd) -> string.concat(toAdd);
+
+        String s1 = b1.apply("nice", " move");
+        String s2 = b2.apply("nice", " move");
+
+
+        System.out.println(s1.contentEquals(s2));
 
     }
 }
